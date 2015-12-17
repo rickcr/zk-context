@@ -1,0 +1,21 @@
+<vlayout apply="org.zkoss.bind.BindComposer" vflex="1" hflex="1"       style="overlap:auto"
+		 viewModel="@id('vm') @init('net.learntechnology.example.viewmodel.IncludeVM')">
+
+	<label context="@init(contextMenuId)" value="Context Menu Test"></label>
+
+	<listbox id="itemsList" model="@load(vm.items)" hflex="1" vflex="1">
+		<listhead sizable="true">
+			<listheader label="Name" align="left" width="250px"/>
+		</listhead>
+
+		<template name="model" var="item">
+			<listitem
+				context="@init(contextMenuId)"
+				value="@load(item)">
+				<listcell label="@load(item)"/>
+			</listitem>
+		</template>
+	</listbox>
+
+</vlayout>
+

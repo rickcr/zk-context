@@ -1,0 +1,24 @@
+<?page title="Context Test" ?>
+<zk>
+	<vlayout apply="org.zkoss.bind.BindComposer" id="outerPage"
+		viewModel="@id('vm') @init('net.learntechnology.example.viewmodel.OuterVM')" vflex="1" hflex="1" style="overflow:auto;">
+
+
+		<groupbox hflex="1" mold="3d" closable="false" vflex="1">
+			<caption  >
+				<label value="@load(vm.title)"/>
+			</caption>
+
+			<vlayout id="itemsContainer" vflex="1" hflex="1">
+				<menupopup id="itemsPopup" onOpen="@command('openContextMenu', open=event.open, item=event.reference.value)">
+					<menuitem label="Edit Item" onClick="@command('editItem')" />
+				</menupopup>
+
+				<include mode="instant"  vflex="1" src="/pages/include.zul"
+				 	contextMenuId="@ref(itemsPopup)"  />
+
+			</vlayout>
+		</groupbox>
+
+	</vlayout>
+</zk>
